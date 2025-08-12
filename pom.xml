@@ -12,8 +12,14 @@
   <url>http://www.example.com</url>
 
   <properties>
+<<<<<<< HEAD
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.release>17</maven.compiler.release>
+=======
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>  
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
+>>>>>>> f266d9e (updated pom.xml file)
   </properties>
 
   <dependencyManagement>
@@ -35,8 +41,34 @@
 	    <artifactId>selenium-java</artifactId>
 	    <version>4.34.0</version>
 	</dependency>
+<<<<<<< HEAD
 
 		<!-- https://mvnrepository.com/artifact/org.testng/testng -->
+=======
+	
+	<!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-java -->
+	<dependency>
+	    <groupId>io.cucumber</groupId>
+	    <artifactId>cucumber-testng</artifactId>
+	    <version>7.26.0</version>  <!-- Match your cucumber-java version -->
+	    <scope>test</scope>
+	</dependency>
+
+	<!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-java -->
+	<dependency>
+	    <groupId>io.cucumber</groupId>
+	    <artifactId>cucumber-java</artifactId>
+	    <version>7.26.0</version>
+	</dependency>
+	<!-- https://mvnrepository.com/artifact/com.aventstack/extentreports -->
+	<dependency>
+	    <groupId>com.aventstack</groupId>
+	    <artifactId>extentreports</artifactId>
+	    <version>5.1.2</version>
+	</dependency>
+	
+	<!-- https://mvnrepository.com/artifact/org.testng/testng -->
+>>>>>>> f266d9e (updated pom.xml file)
 	<dependency>
 	    <groupId>org.testng</groupId>
 	    <artifactId>testng</artifactId>
@@ -44,18 +76,131 @@
 	    <scope>test</scope>
 	</dependency>
 	
+<<<<<<< HEAD
 		<!-- https://mvnrepository.com/artifact/io.github.bonigarcia/webdrivermanager -->
+=======
+	<!-- https://mvnrepository.com/artifact/io.github.bonigarcia/webdrivermanager -->
+>>>>>>> f266d9e (updated pom.xml file)
 	<dependency>
 	    <groupId>io.github.bonigarcia</groupId>
 	    <artifactId>webdrivermanager</artifactId>
 	    <version>6.1.0</version>
 	</dependency>
 	
+<<<<<<< HEAD
   </dependencies>
 
   <build>
     <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
       <plugins>
+=======
+	<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
+	<dependency>
+	    <groupId>com.fasterxml.jackson.core</groupId>
+	    <artifactId>jackson-databind</artifactId>
+	    <version>2.19.1</version>
+	</dependency>
+	
+  </dependencies>
+
+
+	<profiles>
+		<profile>
+			<id>Regression</id>
+			<build>
+			    <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
+			      <plugins>
+			        <plugin>
+			        <groupId>org.apache.maven.plugins</groupId>
+			        <artifactId>maven-surefire-plugin</artifactId>
+			        <version>3.5.3</version>
+			        <configuration>
+			          <suiteXmlFiles>
+			            <suiteXmlFile>testSuites/testng.xml</suiteXmlFile>
+			          </suiteXmlFiles>
+			        </configuration>
+			      	</plugin>
+			      </plugins>
+			    </pluginManagement>
+			   </build>			      
+		</profile>
+	
+		<profile>
+			<id>Purchase</id>
+			
+			<build>
+			    <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
+			      <plugins>
+			        <plugin>
+			        <groupId>org.apache.maven.plugins</groupId>
+			        <artifactId>maven-surefire-plugin</artifactId>
+			        <version>3.5.3</version>
+			        <configuration>
+			          <suiteXmlFiles>
+			            <suiteXmlFile>testSuites/Purchase.xml</suiteXmlFile>
+			          </suiteXmlFiles>
+			        </configuration>
+			      	</plugin>
+			      </plugins>
+			    </pluginManagement>
+			   </build>	
+			   
+		</profile>
+		
+		<profile>
+			<id>ErrorValidation</id>
+			<build>
+			    <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
+			      <plugins>
+			        <plugin>
+			        <groupId>org.apache.maven.plugins</groupId>
+			        <artifactId>maven-surefire-plugin</artifactId>
+			        <version>3.5.3</version>
+			        <configuration>
+			          <suiteXmlFiles>
+			            <suiteXmlFile>testSuites/ErrorValidationTests.xml</suiteXmlFile>
+			          </suiteXmlFiles>
+			        </configuration>
+			      	</plugin>
+			      </plugins>
+			    </pluginManagement>
+			   </build>	
+		
+		</profile>
+		<profile>
+        <id>CucumberTest</id>
+        <build>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>3.0.0-M3</version>
+                    <configuration>
+                        <includes>
+                            <include>**/cucumber/TestNGTestRunner.java</include>
+                        </includes>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </build>
+    </profile>
+		
+	</profiles>
+  <build>
+    <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
+      <plugins>
+			<plugin>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-surefire-plugin</artifactId>
+			<version>3.0.0-M4</version>
+			<configuration>
+				<suiteXmlFiles>
+					<suiteXmlFile>TestSuite/testng.xml</suiteXmlFile>
+				</suiteXmlFiles>
+			</configuration>
+			</plugin>
+        
+>>>>>>> f266d9e (updated pom.xml file)
         <!-- clean lifecycle, see https://maven.apache.org/ref/current/maven-core/lifecycles.html#clean_Lifecycle -->
         <plugin>
           <artifactId>maven-clean-plugin</artifactId>
