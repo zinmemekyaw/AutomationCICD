@@ -62,12 +62,9 @@ public class StandAloneTest {
 			driver.findElement(By.cssSelector(".hero-primary")).getText().equalsIgnoreCase("THANKYOU FOR THE ORDER.");
 			driver.close();
 		
-<<<<<<< HEAD
-=======
 			//Git Testing
 			//new comments are added
 			System.out.println("Updated");
->>>>>>> f266d9e (updated pom.xml file)
 			
 			
 	}
